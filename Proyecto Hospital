@@ -11,8 +11,7 @@ public Paciente() {
         txtFechadeNacimiento.setText("");
         txtCorreo.setText("");
         txtTelefono.setText("");
-        cbxEps.setSelectedIndex(-1);
-       
+        cbxEps.setSelectedIndex(-1);       
     }
     public void FtnBuscarBD2(){
         DefaultTableModel modelo = new DefaultTableModel();
@@ -24,10 +23,8 @@ public Paciente() {
         modelo.addColumn("Telefono");
         modelo.addColumn("Eps");
         Conexion con = new Conexion();
-        Connection cnx = con.conectar();
-       
-        String id = txtDocumento.getText();
-       
+        Connection cnx = con.conectar();       
+        String id = txtDocumento.getText();    
         try {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery("SELECT p.PKDocumento, p.Nombre, p.Apellido, p.FechaNacimiento, p.Correo, p.Telefono, e.Descripcion FROM tblpacientes p, tbleps e WHERE p.FKCodigo_TblEps = e.PKCodigo" );
@@ -75,8 +72,7 @@ public Paciente() {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery("SELECT p.PKDocumento, p.Nombre, p.Apellido, p.FechaNacimiento, p.Correo, p.Telefono, e.Descripcion FROM tblpacientes p, tbleps e WHERE p.FKCodigo_TblEps = e.PKCodigo");
            
-             while (rs.next()) {
-                
+             while (rs.next()) {             
                 String [] fila = new String[7];
             fila[0] = rs.getString(1);
             fila[1] = rs.getString(2);
@@ -104,13 +100,11 @@ public Paciente() {
        }
     }
    
-   public void cargarCbx(){
-        
+   public void cargarCbx(){       
         Conexion con = new Conexion();
         com.mysql.jdbc.Connection cnx = con.conectar();
         Statement st;
         int dato = 0;
-
 
         try {
             st = cnx.createStatement();
@@ -122,6 +116,5 @@ public Paciente() {
             }
         } catch (SQLException ex) {
             System.err.println("error1");
-        }
-        
+        }        
     }
